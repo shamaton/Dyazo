@@ -90,8 +90,7 @@ func uploadHandler(w http.ResponseWriter, r *http.Request) {
 
 	h := md5.New()
 	io.WriteString(h, key+timeStr)
-	md5Str := fmt.Sprintf("%x", h.Sum(nil))
-	baseName := md5Str + ".jpg"
+	baseName := fmt.Sprintf("%x", h.Sum(nil))
 
 	// ファイル生成
 	imageFile := path.Join(imageDir, baseName)
