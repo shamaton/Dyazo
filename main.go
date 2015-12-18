@@ -12,15 +12,26 @@ import (
 	"time"
 )
 
+var HOST = "localhost"
+var IS_DEBUG = false;
+
+func init() {
+	// ランダムシード
+	rand.Seed(time.Now().UnixNano())
+
+	// ホスト名
+	if !IS_DEBUG {
+		HOST = os.Getenv("HOSTNAME")
+	}
+}
+
 /**************************************************************************************************/
 /*!
  *  エントリポイント
  */
 /**************************************************************************************************/
 func main() {
-	// ランダムシード
-	rand.Seed(time.Now().UnixNano())
-
+	// routing
 	http.HandleFunc("/ping", pingHandler)
 	http.HandleFunc("/images/", imagesHandler)
 	http.HandleFunc("/upload", uploadHandler)
@@ -99,7 +110,7 @@ func uploadHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// 生成されたURLを返す
-	fmt.Fprintf(w, "http://%s/images/%s", r.Host, baseName)
+	fmt.Fprintf(w, "http://%s/images/%s", HOST, baseName)
 }
 
 /**************************************************************************************************/
