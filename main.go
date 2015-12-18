@@ -51,8 +51,6 @@ func pingHandler(w http.ResponseWriter, r *http.Request) {
  */
 /**************************************************************************************************/
 func uploadHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("bbb")
-	return
 	// ディレクトリ取得
 	dir, err := os.Getwd()
 	if err != nil {
