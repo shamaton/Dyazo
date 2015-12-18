@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# crontab
+# * 5 * * * sh /home/gyazo/git/Dyazo/cleaner.sh
+
 # directory
 DIR=`dirname $0`
 cd ${DIR}
